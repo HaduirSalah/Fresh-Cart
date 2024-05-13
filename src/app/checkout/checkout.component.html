@@ -1,0 +1,53 @@
+<div class="container">
+    <h6 class="fs-2 mx-3 my-2">Order Now :</h6>
+    <div *ngIf="apiError" class="alert alert-warning mx-3 my-2">
+        <!--apiError.length>0-->
+        <strong>Warning !</strong> {{ apiError }}
+    </div>
+
+    <form [formGroup]="cashOrderForm" class="p-4" (ngSubmit)="SubmitCashOrderForm(cashOrderForm)">
+        <div class="mb-3 form-group">
+            <label for="details">Details :</label>
+            <input type="text" class="form-control" formControlName="details" name="details" id="details"
+                placeholder="details" />
+            <div *ngIf="cashOrderForm.get('details')?.errors != null &&cashOrderForm.get('details')?.touched"
+                class="text-danger mt-2">
+                <p *ngIf="cashOrderForm.get('details')?.errors?.['required']">
+                    Details is required
+                </p>
+            </div>
+        </div>
+        
+
+        <div class="mb-3 form-group">
+            <label for="phone">Phone :</label>
+            <input type="number" class="form-control" formControlName="phone" name="phone" id="phone"
+                placeholder="phone" />
+            <div *ngIf="cashOrderForm.get('phone')?.errors != null &&cashOrderForm.get('phone')?.touched"
+                class="text-danger mt-2">
+                <p *ngIf="cashOrderForm.get('phone')?.errors?.['required']">
+                    phone is required
+                </p>
+            </div>
+        </div>
+
+
+        <div class="mb-3 form-group">
+            <label for="city">City :</label>
+            <input type="text" class="form-control" formControlName="city" name="city" id="city"
+                placeholder="city" />
+            <div *ngIf="cashOrderForm.get('city')?.errors != null && cashOrderForm.get('city')?.touched"
+                class="text-danger mt-2">
+                <p *ngIf="cashOrderForm.get('city')?.errors?.['required']">
+                    city is required
+                </p>
+            </div>
+        </div>
+     
+
+        <button [disabled]="cashOrderForm.invalid" type="submit" class="btn btn-success d-block">
+            <i *ngIf="isLoading" class="fa-solid fa-spinner fa-spin"></i>
+            <span *ngIf="!isLoading">Pay</span>
+        </button>
+    </form>
+</div>

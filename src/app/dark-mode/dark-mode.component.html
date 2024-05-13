@@ -1,0 +1,15 @@
+
+
+<!-- <label class="switch">
+    <input type="checkbox" (click)="toggleDarkMode()">
+    <span class="slider round"></span>
+  
+  </label> -->
+
+<!-- show moon icon when dark mode is active -->
+<i class="fa-solid fa-moon m-2 fs-5" *ngIf="(darkModeService.isDarkMode$ | async)" (click)="toggleDarkMode()"></i>   
+
+<!-- show sun icon when light mode is active -->
+<i class="fa-solid fa-sun m-2 fs-5" *ngIf="!(darkModeService.isDarkMode$ | async)" (click)="toggleDarkMode()"></i>
+     
+  

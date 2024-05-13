@@ -1,0 +1,49 @@
+<div class="container" [dir]="'Dir' | translate">
+    <h6 class="fs-2 mx-3 my-2">{{'LoginNow' | translate}} :</h6>
+    <div *ngIf="apiError" class="alert alert-warning mx-3 my-2">
+        <!--apiError.length>0-->
+        <strong>Warning !</strong> {{ apiError }}
+    </div>
+
+    <form [formGroup]="loginForm" class="p-4" (ngSubmit)="SubmitLoginForm(loginForm)">
+        <div class="mb-3 form-group">
+            <label for="email">{{'UserInfo.Email' | translate}} :</label>
+            <input type="email" class="form-control" formControlName="email" name="email" id="email"
+                placeholder="email" />
+            <div *ngIf="loginForm.get('email')?.errors != null &&loginForm.get('email')?.touched"
+                class="text-danger mt-2">
+                <p *ngIf="loginForm.get('email')?.errors?.['required']">
+                    Email is required
+                </p>
+                <p *ngIf="loginForm.get('email')?.errors?.['email']">
+                    Email is not match
+                </p>
+            </div>
+        </div>
+
+        <div class="mb-3 form-group">
+            <label for="password">{{'UserInfo.Password' | translate}} :</label>
+            <input type="password" class="form-control" formControlName="password" name="password" id="password"
+                placeholder="password" />
+            <div *ngIf="loginForm.get('password')?.errors != null &&loginForm.get('password')?.touched"
+                class="text-danger mt-2">
+                <p *ngIf="loginForm.get('password')?.errors?.['required']">
+                    Password is required
+                </p>
+                <p *ngIf="loginForm.get('password')?.errors?.['pattern']">
+                    Password is not match
+                </p>
+            </div>
+        </div>
+
+        <button [disabled]="loginForm.invalid" type="submit" class="btn btn-success d-block">
+            <i *ngIf="isLoading" class="fa-solid fa-spinner fa-spin"></i>
+            <span *ngIf="!isLoading">{{'Login' | translate}}</span>
+        </button>
+    </form>
+</div>
+
+
+<h1 class="text-3xl font-bold underline">
+    Hello world!
+  </h1>

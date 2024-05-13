@@ -1,0 +1,17 @@
+{
+  "Dir":"rtl",
+  "RegisterNow":"سجل الآن",
+  "LoginNow":"سجل الآن",
+  "UserInfo":
+  {
+    "Name": "الاسم ",
+    "Email": "البريد الالكتروني",
+    "Password": "كلمة السر",
+    "RePassword": "تأكيد كلمة السر",
+    "Phone": "الموبيل"
+  },
+
+  "Register": "تسجيل جديد",
+  "Login":"تسجيل دخول"
+
+  }

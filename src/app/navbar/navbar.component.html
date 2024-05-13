@@ -1,0 +1,104 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-light" >
+    <div class="container">
+
+        <a class="navbar-brand fw-bold ">
+            <img src="/assets/Images/OIP.jpg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+            FreshCart</a>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+
+            <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+
+                <!-- <li *ngIf="isLogin" class="nav-item">
+                    <a class="nav-link" routerLink="home">Home</a>
+                </li> -->
+
+                <li *ngIf="isLogin" class="nav-item">
+                    <a class="nav-link" routerLink="products">Home</a>
+                </li>
+
+                <!-- <li *ngIf="isLogin" class="nav-item">
+                    <a class="nav-link" routerLink="cart">Cart</a>
+                </li> -->
+
+                <li *ngIf="isLogin" class="nav-item">
+                    <a class="nav-link" routerLink="products">Products</a>
+                </li>
+
+                <li *ngIf="isLogin" class="nav-item">
+                    <a class="nav-link" routerLink="categories">Categories</a>
+                </li>
+                <li *ngIf="isLogin" class="nav-item">
+                    <a class="nav-link" routerLink="brands">Brands</a>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+
+                <li class="nav-item d-flex align-items-center">
+                    <i class="fab  fa-instagram mx-2 fs-6"></i>
+                    <i class="fab  fa-facebook mx-2 fs-6"></i>
+                    <i class="fab  fa-tiktok mx-2 fs-6"></i>
+                    <i class="fab  fa-twitter mx-2 fs-6"></i>
+                    <i class="fab  fa-linkedin mx-2 fs-6"></i>
+                    <i class="fab  fa-youtube mx-2 fs-6"></i>
+         
+                </li>
+
+                <li *ngIf="!isLogin" class="nav-item">
+                    <a class="nav-link" routerLink="login">Login</a>
+                </li>
+
+                <li *ngIf="!isLogin" class="nav-item">
+                    <a class="nav-link" routerLink="register">Register</a>
+                </li>
+
+                <li *ngIf="isLogin" class="nav-item">
+                    <a class="nav-link cursor-pointer" routerLink="Logout" (click)="logOut()">Logout</a>
+                </li>
+
+                <li *ngIf="isLogin" class="nav-item position-relative">
+                    <a class="nav-link cursor-pointer" class="nav-link" routerLink="cart">
+                        <i class="fa fa-shopping-cart fs-4 ">
+
+                        </i>
+                        <span *ngIf="(_CartService.cartData$ | async) as cartData" class="position-absolute top-2 translate-middle px-1 py-0 bg-danger border border-light rounded-circle">
+                            <span class="text-light">{{ cartData }}</span>
+                          </span>
+                          
+                          
+                    </a>
+                </li>
+
+                <li *ngIf="isLogin" class="nav-item">
+                    <a class="nav-link cursor-pointer" routerLink="settings">
+                        <i class="fa-solid fa-gear fs-5 ">
+
+                        </i>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+               
+                    <app-dark-mode ></app-dark-mode>
+                </li>
+
+                <li class="nav-item" >
+                   <select name="" id="" (change)="translate($event)" class="form-select">
+                    <option value="en">En</option>
+                    <option value="ar">Ar</option>
+                   </select>
+                    
+                </li>
+     
+
+
+
+            </ul>
+        </div>
+    </div>
+</nav>

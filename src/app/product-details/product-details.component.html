@@ -1,0 +1,62 @@
+<div *ngIf="cartObj" class="text-success text-center m-5 p-5 fw-bold fs-2">
+  {{cartObj}}
+</div>
+<div *ngIf="ErrorLogged" class="text-danger text-center m-5 p-5 fw-bold fs-2">
+  {{ErrorLogged}}
+</div>
+
+<div class="container page-wrapper">
+
+  <div *ngIf="!cartObj && !ErrorLogged" class="page-inner">
+    <div class="row">
+      <div class="el-wrapper">
+        <div class="box-up">
+
+          <img class="img" [src]="productDetails?.imageCover" alt=".." class="img-fluid d-block mx-auto mb-3">
+          <div class="img-info">
+            <div class="info-inner">
+              <span class="p-name">{{productDetails?.title}}</span>
+              <span class="p-company">{{productDetails?.description.slice(0,60)}}...</span>
+            </div>
+            <!-- <div class="a-size">Available sizes : <span class="size">S , M , L , XL</span></div> -->
+            <div class="a-size">Brands : <span class="size">{{productDetails?.brand.name}}</span></div>
+          </div>
+        </div>
+
+        <div class="box-down">
+          <div class="h-bg">
+            <div class="h-bg-inner"></div>
+          </div>
+
+          <a class="cart">
+            <span class="price">{{productDetails?.price | currency}} </span>
+            <span class="add-to-cart">
+              <span class="txt" (click)="addProductToCart(productDetails.id)">Add in cart</span>
+
+            </span>
+          </a>
+        </div>
+        <div class="d-flex justify-content-center my-2">
+          <!-- <button type="button" class="btn btn-warning btn-lg ">Buy Now</button> -->
+        
+        </div>
+
+
+        <div class="alert alert-info" *ngFor="let review of productDetails?.reviews">
+          {{review}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <owl-carousel-o [options]="customOptions">
+
+  <ng-container *ngFor="let slide of productDetails?.images">
+    <ng-template carouselSlide >
+      <img class="img" [src]="slide">
+
+    </ng-template>
+  </ng-container>
+
+</owl-carousel-o> -->
